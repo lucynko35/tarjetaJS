@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Complatible" content="IE-edge">
+    <title>¡Crea una tarjeta! 💌</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Pangolin&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="images/mail-icon.png" rel="icon" sizes="50x50">
+    
+    <script>
+        function cambiarTamañoEjemplo(){
+            var tam=document.getElementById("sizeTxt").value;
+            // em ES LA UNIDAD DE MEDIDA EN PUNTOS PARA EL TEXTO EN PÁGINAS WEB
+            document.getElementById("ejemploTxt").style.fontSize=tam+"em";
+        }
+    
+    function generarTarjeta(){
+        
+        document.getElementById("tarjeta").style.display='block';
+        
+        //SE REVISA EL RADIO DE LA IMAGEN ELEGIDA Y RECUPERAMOS SU RUTA
+        var fondo;
+        if(document.getElementById("tipoImg1").checked)
+                fondo=document.getElementById("tipoImg1").value;
+        else if(document.getElementById("tipoImg2").checked)
+                fondo=document.getElementById("tipoImg2").value;
+        else    fondo=document.getElementById("tipoImg3").value;
+        
+        //AGREGAMOS EL FONDO A LA TARJETA
+        document.getElementById("tarjeta").style.backgroundImage="url('"+fondo+"')";
+        document.getElementById("tarjeta").style.backgroundRepeat="no-repeat";
+        
+        //VALIDAMOS LOS DATOS Y LOS RECUPERAMOS
+        var nombre=document.getElementById("paraTxt").value;
+        document.getElementById("para").innerHTML=nombre;
+        
+        var nombre=document.getElementById("deTxt").value;
+        document.getElementById("de").innerHTML=nombre;
+        
+        var title=document.getElementById("tituloTxt").value;
+        document.getElementById("titulo").innerHTML=title;
+        
+        var subtitle=document.getElementById("subtituloTxt").value;
+        document.getElementById("subtitulo").innerHTML=subtitle;
+        
+        var desc=document.getElementById("descripcionTxt").value;
+        document.getElementById("descripcion").innerHTML=desc;
+                        
+        //LE CAMBIAMOS COLOR AL TEXTO
+        var colorT=document.getElementById("colorTxt").value;
+        document.getElementById("titulo").style.color=colorT;
+        
+        var colorT=document.getElementById("colorTxt").value;
+        document.getElementById("para").style.color=colorT;
+        
+        var colorT=document.getElementById("colorTxt").value;
+        document.getElementById("de").style.color=colorT;
+        
+        var colorT=document.getElementById("colorTxt").value;
+        document.getElementById("subtitulo").style.color=colorT;
+        
+        var colorT=document.getElementById("colorTxt").value;
+        document.getElementById("descripcion").style.color=colorT;
+        
+        //LE CAMBIAMOS EL TAMAÑO AL TEXTO
+        var sizeT=document.getElementById("sizeTxt").value;
+        document.getElementById("titulo").style.fontSize=sizeT+"em";
+        
+        var sizeT=document.getElementById("sizeTxt").value;
+        document.getElementById("para").style.fontSize=sizeT+"em";
+        
+        var sizeT=document.getElementById("sizeTxt").value;
+        document.getElementById("de").style.fontSize=sizeT+"em";
+        
+        var sizeT=document.getElementById("sizeTxt").value;
+        document.getElementById("subtitulo").style.fontSize=sizeT+"em";
+        
+        var sizeT=document.getElementById("sizeTxt").value;
+        document.getElementById("descripcion").style.fontSize=sizeT+"em";
+        
+        //VALIDAMOS LA TIPOGRAFÍA Y RECUPERAMOS EL VALOR
+        var tipo;
+        if(document.getElementById("tipoTxt1").checked)
+                tipo=document.getElementById("tipoTxt1").value;
+        else if(document.getElementById("tipoTxt2").checked)
+                tipo=document.getElementById("tipoTxt2").value;
+        else    tipo=document.getElementById("tipoTxt3").value;
+        
+        //ASIGNAMOS LA TIPO
+        document.getElementById("de").style.fontFamily=tipo;
+        document.getElementById("para").style.fontFamily=tipo;
+        document.getElementById("titulo").style.fontFamily=tipo;
+        document.getElementById("subtitulo").style.fontFamily=tipo;
+        document.getElementById("descripcion").style.fontFamily=tipo;    
+        
+        //OCULTAMOS LA ZONA DE EDICIÓN
+        document.getElementById("contenido").style.display='none';
+    }           
+    </script>    
+</head>
+<body>
+    <!-- TODO ESTE ARTICLE CONTIENE LA PÁGINA DE EDICIÓN -->
+    <article id="contenido">
+        <h1> ¡CREA UNA TARJETA PERSONALIZADA! ✍</h1>
+        <h2>🖼 Elige una imagen para usarla de fondo:</h2>
+        <!--EL ID SE PONE DIFERENTE SI SOLO QUIERO SELECCIONAR UNA DE LAS OPCIONES, SI NO, CADA UNA ES LLAMADA DIFERENTE-->
+            <input type="radio" name="tipoImg" id="tipoImg1" checked value="images/cumple.png">
+            <img src="images/cumple.png" alt="Cumpleaños" height="150" width="150">
+            <input type="radio" name="tipoImg" id="tipoImg2" value="images/motiv.png">
+            <img src="images/motiv.png" alt="Motivación" height="150" width="150">
+            <input type="radio" name="tipoImg" id="tipoImg3" value="images/SV2.png">
+            <img src="images/SV2.png" alt="San Valentín" height="150" width="150">
+               
+        <h2>📩 De:</h2>
+            <input type="text" id="deTxt">
+        
+        <h2>📨 Para:</h2>
+            <input type="text" id="paraTxt">                
+        
+         <h2> ◾ Escribe un título:</h2>
+            <input type="text" id="tituloTxt">        
+        
+        <h2> ◽ Escribe un subtítulo:</h2>
+            <input type="text" id="subtituloTxt">    
+        
+        <h2>✒ Agrega un mensaje:</h2>
+            <textarea id="descripcionTxt" cols="50" rows="5"></textarea>        
+       
+        <h2>✨ Dale un formato de texto</h2>
+            <p>Decoremos el mensaje para que tu tarjeta quede chida 😎</p> <br>
+            <label for="colorTxt"> Color: </label>
+            <input type="color" id="colorTxt"> <br>
+            <label for="sizeTxt"> Tamaño de letra: </label>
+            <input type="range" id="sizeTxt" min="1" max="3" onchange="cambiarTamañoEjemplo()"> 
+            <label id="ejemploTxt">¡Hola!</label><br>
+            
+             <label>Tipografía: </label><br>
+             <input type="radio" name="tipoTxt" id="tipoTxt1" checked value="Indie Flower">
+             <label id="tipo1">Indie Flower</label>
+             <input type="radio" name="tipoTxt" id="tipoTxt2" value="Pangolin">
+             <label id="tipo2">Pangolin</label>
+             <input type="radio" name="tipoTxt" id="tipoTxt3" value="Satisfy">
+             <label id="tipo3">Satisfy</label>
+             <br>
+        
+            <img src="images/crear.png" onclick="generarTarjeta()" >
+            
+    </article>
+    
+    <article id="tarjeta">
+        <h4 id="para"></h4>        
+        <h4 id="titulo"></h4>
+        <h4 id="subtitulo"></h4>
+        <h4 id="descripcion"></h4>
+        <h4 id="de"></h4>
+        
+    </article>
+</body>
+</html>
